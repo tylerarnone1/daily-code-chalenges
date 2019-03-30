@@ -209,7 +209,9 @@ function sayHello() {
   charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
   -----------------------------------------------------------------*/
   // Your solution for 09-charCount here:
-  
+  function charCount(str){
+    return str.filter()
+  }
   
   
   
@@ -230,7 +232,13 @@ function sayHello() {
   formatWithPadding(1234, '*', 3); //=> "1234"
   -----------------------------------------------------------------*/
   // Your solution for 10-formatWithPadding here:
-  
+  function formatWithPadding(int, char, length) {
+    var result = int.toFixed(0);
+    while (result.length < length) {
+      result = char + result;
+    }
+    return result;
+  }
   
   
   
