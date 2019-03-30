@@ -46,8 +46,13 @@ function sayHello() {
   addTwoNumbers('Hello', 5) //=> NaN
   -----------------------------------------------------------------*/
   // Your solution for 02-addTwoNumbers here:
-   Function AddTwoNumbers(x, y){
-     return x+y;
+   function addTwoNumbers(x, y) {
+     if (typeof x || typeof y == NaN){
+       console.log('Not a number')
+     }else{
+       return x+y
+     }
+     
    }
   
   
@@ -94,7 +99,13 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 04-addList here:
   
-  
+  function addList() {
+    var sum =0;
+    for(var i = 0; i < arguments.length; i++){
+      sum +=arguments[i];
+    }
+    console.log(sum);
+  }
   
   
   
@@ -114,6 +125,10 @@ function sayHello() {
   // Your solution for 05-computeRemainder:
   
   
+  function computeRemainder(dividend, divisor) {
+    if (divisor === 0) return Infinity;
+    return dividend - (Math.floor(dividend / divisor) * divisor);
+  }
   
   
   
@@ -130,6 +145,13 @@ function sayHello() {
   range(5,2) //=> "First argument must be less than second"
   -----------------------------------------------------------------*/
   // Your solution for 06-range here:
+  var newArr =[]
+  
+  function range(){
+    newArr.sort(function(a,b){
+      return a-b
+    })
+  }
   
   
   
@@ -144,7 +166,9 @@ function sayHello() {
   reverseUpcaseString("WDI Rocks!"); //=> "!SKCOR IDW" 
   -----------------------------------------------------------------*/
   // Your solution for 07-reverseUpcaseString here:
-  
+  function reverseUpcaseString(str){
+    return str.upper().reverse()
+  }
   
   
   
@@ -160,7 +184,14 @@ function sayHello() {
   removeEnds('a'); //=> "" (empty string)
   -----------------------------------------------------------------*/
   // Your solution for 08-removeEnds here:
-  
+  function removeEnds(str) {
+    if (str.length < 3) return '';
+    var result= '';
+    for (var i = 1; i < str.length - 1; i++) {
+      result += str.charAt(i);
+    }
+    return result;
+  }
   
   
   
