@@ -259,7 +259,14 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 11-isPalindrome here:
   
-  
+  function isPalindrome(str) {
+    str = str.Lower();
+   if (str == str.reverse()){
+     return ('Is a palindrome')
+   }else{
+     return ('Is not a palindrome')
+   }
+  }
   
   
   
