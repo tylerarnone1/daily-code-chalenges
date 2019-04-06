@@ -342,7 +342,13 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 14-fromPairs here:
   
-  
+  function fromPairs(arr) {
+      return arr.reduce((obj, kvArr) => {
+          obj[kvArr[0]] = kvArr[1];
+         return obj;
+       }, {});
+     }
+    
   
   
   
@@ -359,6 +365,14 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 15-mergeObjects here:
   
+  function mergeObjects(target, ...objects) {
+    objects.forEach(function(obj) {
+      for(var key in obj) {
+        target[key] = obj[key];
+        }
+    });
+    return target;
+  }
   
   
   
@@ -389,7 +403,10 @@ function sayHello() {
   //=> { sku: 'b2', price: 50 }
   -----------------------------------------------------------------*/
   // Your solution for 16-findHighestPriced here:
-  
+  unction findHighestPriced(arr) {
+      return arr.reduce((highest, item) => 
+      item.price > highest.price ? item : highest);
+     }
   
   
   
@@ -414,7 +431,13 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 17-mapArray here:
   
-  
+  function mapArray(arr, cb) {
+      var newArr = [];
+       arr.forEach(function(e, ind) {
+         newArr.push( cb(e, ind) );
+    });
+    return newArr;
+  }
   
   
   
@@ -444,6 +467,13 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 18-reduceArray here:
   
+  function reduceArray(arr, cb, initAcc) {
+    var acc = initAcc;
+    arr.forEach(function(e, ind) {
+      acc = cb(acc, e, ind);
+    });
+    return acc;
+  }
   
   
   
@@ -468,7 +498,12 @@ function sayHello() {
   // Your solution for 19-flatten here:
   
   
-  
+  function flatten(arr) {
+    return arr.reduce((flatArr, elem) => 
+    flatArr.concat(Array.isArray(elem) ? flatten(elem):
+     elem), []);
+
+    
   
   
   /*-----------------------------------------------------------------
@@ -485,6 +520,14 @@ function sayHello() {
   isPrime(200) //=> false
   -----------------------------------------------------------------*/
   // Your solution for 20-isPrime here:
+  
+  function isPrime(n) {
+    if (n < 2 || !Number.isInteger(n)) return false;
+    for (var i = 2; i <= n / 2; i++) {
+      if (Number.isInteger(n / i)) return false;
+    }
+    return true;
+  }
   
   
   
@@ -510,6 +553,23 @@ function sayHello() {
   // Your solution for 21-primeFactors here:
   
   
+  funtion primeFactors(n){
+
+  var factors = [];
+   if (n < 2 || !Number.isInteger(n)) return factors;
+   var divisor = 2;
+  while (n >= divisor * divisor) {
+     if (Number.isInteger(n / divisor)) {
+       factors.push(divisor);
+      n = n / divisor;
+    } else {
+            divisor++;
+     }
+   }
+   factors.push(n);
+   return factors;
+ }
+
   
   
   
@@ -530,7 +590,16 @@ function sayHello() {
   // Your solution for 22-intersection here:
   
   
-  
+  function intersection(a1, a2) {
+    var result = [];
+    
+    var _a2 = [a2];
+    a1.forEach(val => {
+      var idx = a2.indexOf(val);
+      if (idx > -1) result.push(a2.splice(idx, 1)[0]);
+    });
+    return result;
+  }
   
   
   /*-----------------------------------------------------------------
@@ -550,7 +619,12 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 23-balancedBrackets here:
   
-  
+  function balancedBrackets(str) {
+      var a = [];
+     return str.split('').every(c => 
+      '([{'.includes(c) ? a.push(c) : '() {} []'.includes(a.pop() + c));
+     }
+    
   
   
   
@@ -573,7 +647,9 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 24-isWinningTicket here:
   
-  
+  function isWinningTicket(ticket){
+       return ticket.every(arr =>
+         arr[0].includes(String.fromCharCode(arr[1])));
   
   
   
@@ -616,6 +692,11 @@ function sayHello() {
   -----------------------------------------------------------------*/
   // Your solution for 26-toCamelCase here:
   
+  function toCamelCase(str) {
+    return str.replace(/[_-]\w/g, function(match) {
+      return match.charAt(1).toUpperCase();
+    });
+  }
   
   
   
